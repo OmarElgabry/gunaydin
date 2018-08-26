@@ -57,32 +57,6 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 	```
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
-### Deploying to Heroku
-Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
-
-1. Create a new Heroku application, and push your application to a Git remote repository. In order for nightmare to work on heroku, check out this [guide](https://github.com/oscarmorrison/nightmare-heroku).
-
-	```
-	$ git init 
-	$ heroku create [app-name] 
-	$ heroku stack:set cedar-14 -a [app-name]
-	$ heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt && heroku buildpacks:add --index 2 https://github.com/captain401/heroku-buildpack-xvfb.git && heroku buildpacks:add --index 3 https://github.com/causztic/heroku-electron-buildpack.git && heroku buildpacks:add --index 4 https://github.com/heroku/heroku-buildpack-nodejs.git
-	$ git push heroku master
-	```
-	or
-	
-	[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-2. Now, you need to set up configuration variables on Heroku. 
-	1. Go to Settings -> Reveal Config Vars.
-	2. Add configuration variables. You'll need to add configurations for database, social login tokens, loggly, etc.
-3. Open your application in the browser
-	```
-	$ heroku open
-	```
-
-
-
 ## How It Works<a name="how-it-works"></a>
 ### Setup Configurations<a name="configurations"></a>
 Everything from setting up user authentication to database is explained in [chat.io](https://github.com/OmarElGabry/chat.io#how-it-works). I almost copied and pasted the code.

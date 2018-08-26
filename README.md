@@ -2,7 +2,6 @@
 ![Screenshot](https://raw.githubusercontent.com/OmarElGabry/gunaydin/master/public/img/gunaydin.png)
 
 # Gunaydin!
-[![Dependency Status](https://www.versioneye.com/user/projects/57d746d1df40d0004a4a9e21/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57d746d1df40d0004a4a9e21)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/OmarElGabry/chat.io/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/OmarElGabry/gunaydin/?branch=master)
 [![Code Climate](https://codeclimate.com/github/OmarElGabry/chat.io/badges/gpa.svg)](https://codeclimate.com/github/OmarElGabry/gunaydin)
 

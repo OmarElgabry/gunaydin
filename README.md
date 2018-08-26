@@ -50,11 +50,7 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 	```
 	$ npm install
 	```
-3. Edit configuration file in _app/config/config.json_ with your credentials (see [Setup Configurations](#configurations)).
-	```
-	$ redis-server
-	``` 
-4. Start the application
+3. Start the application
 
 	```
 	$ npm start

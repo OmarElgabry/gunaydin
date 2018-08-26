@@ -95,7 +95,7 @@ class UserService {
       return { error: `The page doesn't exist.` };
     } 
     
-    let canUpdate = await User.canUpdatePage(userPages[pI]); 
+    let canUpdate = await User.canUpdatePage(userPage); 
     if(!canUpdate) {
       return { error: `You can't refresh the page. \n It's either muted or it has been updated recently.` };
     }

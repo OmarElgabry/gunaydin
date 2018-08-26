@@ -132,7 +132,7 @@ class SchedulerService {
   static scrap() {
     var shard = SchedulerService.state.shard;
 
-    User.getByShard(shard, (err, users) => {
+    User.getByShard(shard, async (err, users) => {
       if(err) { 
         logger.error(`Failed to load users in shard ${shard}`, err);
         return;
@@ -154,8 +154,9 @@ class SchedulerService {
         let userPages = users[uI].pages;
 
         for(let pI = 0; pI < userPages.length; pI++) {
-          // don't proceed if user's page has been updated recently or muted     
-          if(! (await (User.canUpdatePage(userPage)))) { continue; }
+          // don't proceed if user's page has been updated recently or muted    
+          let canUpdate = await User.canUpdatePage(userPages[pI]); 
+          if(!canUpdate) { continue; }
 
           // send job to be processed
           SchedulerService.sendScrapJob({ uI, pI, userPage: userPages[pI] });

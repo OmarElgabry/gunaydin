@@ -1,5 +1,5 @@
 
-![Screenshot](https://raw.githubusercontent.com/OmarElGabry/chat.io/master/public/img/gunaydin.png)
+![Screenshot](https://raw.githubusercontent.com/OmarElGabry/gunaydin/master/public/img/gunaydin.png)
 
 # Gunaydin!
 [![Dependency Status](https://www.versioneye.com/user/projects/57d746d1df40d0004a4a9e21/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57d746d1df40d0004a4a9e21)

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Gunaydin | Home</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="description" content="Demo project">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+   </head>
+   <body>
+      <div class="super_container">
+         <!-- Header -->
+         <div class="home">
+           <!-- Unsplash: https://source.unsplash.com/ -->
+            <div class="home_background parallax-window" data-parallax="scroll" data-image-src="https://source.unsplash.com/1600x900/?turkey,istanbul" data-speed="0.8" naturalHeight="300px"></div>
+            <div class="home_content">
+               <div class="post_category trans_200">
+                <a href="/" class="trans_200">
+                  Gunaydin! 
+                  <br><small style="font-size:12px;">With <i class="fa fa-heart" style="color:red;"></i> from 🇹🇷</small>
+                </a>
+              </div>
+               <!--<div class="post_title">Gunaydin <i class="fa fa-heart" style="color:red;"></i> </div>-->
+            </div>
+         </div>
+         <!-- END: Header -->
+         <div class="page_content">
+            <div class="container" style="max-width: 100% !important;">
+               <div class="row row-lg-eq-height">
+                  <div class="col-md-3">
+                     <div class="post_content">
+                        <!-- Profile -->
+                        <div class="post_panel bottom_panel d-flex flex-row align-items-center justify-content-start">
+                           <div class="author_image">
+                              <div><img src="<%=user.picture%>" alt=""></div>
+                           </div>
+                           <div class="post_meta">
+                             <a class="username"><%=user.username%></a>
+                             <a href="/logout" class="logout" title="Logout"><i class="fa fa-power-off"></i></a>
+                            </div>
+                        </div>
+                        <!-- END: Profile -->
+                        <!-- Pages -->
+                        <div class="similar_posts">
+                           <div class="grid clearfix">
+                              <div class="card card_small_with_image grid-item">
+                                 <div class="card-body">
+                                    <div class="card-title card-title-small">
+                                       <a class="post_comment_title" style="color: rgba(0,0,0,0.8);">Pages</a>
+                                    </div>
+                                    <div class="post_tags">
+                                       <!-- Page link -->
+                                       <ul>
+                                        <% var randNum = Math.floor(Math.random()*1000); %>
+                                        <% pages.forEach(function(page, pageId){ %>
+                                          <li class="post_tag" id="<%=randNum^pageId%>">
+                                             <a href="javascript:void(0)" class="pull-right page-options delete" title="Delete" style="color: indianred;"><i class="fa fa-trash"></i></a>
+                                             <a href="javascript:void(0)" class="pull-right page-options refresh" title="Refresh"><i class="fa fa-refresh"></i></a>
+                                             <a href="javascript:void(0)" class="pull-right page-options mute" title="Mute (Don't update)">
+                                              <i class="fa fa-bell<%=(page.muted)? '-slash': '' %>"></i>
+                                            </a>
+                                            <a class="pull-right page-options page-url" title="Open link" href="<%=page.pageUrl%>" target="_blank"><i class="fa fa-link"></i></a>
+                                             
+                                            <% if(page.notifications) { %> 
+                                              <a href="javascript:void(0)" class="pull-right page-options notifications">
+                                                  <span class="badge badge-primary"><i class="fa fa-bolt"></i><b> <%=page.notifications%></b></span>                                               
+                                              </a>
+                                            <% } %>
+
+                                             <a class="page-title" href="javascript:void(0)"><%=page.title%></a>
+                                          </li>
+                                          <% }); %>
+                                          <% if(pages.length === 0) { %> <span class="no-data">You don't have pages yet!.</span> <% }%>
+                                       </ul>
+                                       <!-- END: Page link -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Add Page & Links -->
+                  <div class="col-md-6">
+                     <!-- Add Page -->
+                     <div class="post_comment">
+                        <div class="row">
+                           <div class="col-xl-12">
+                              <div class="post_comment_form_container" style="padding-top: 20px">
+                                 <div class="post_comment_title">Add Page</div>
+                                 <form>
+                                    <% var maxlength = 15; %>
+                                    <input type="text" class="comment_input" name="link" placeholder="Link" autocomplete="off" required style="width: 100%;">
+                                    <input type="text" class="comment_input" name="title" placeholder="Title (Optional)" maxlength="<%=maxlength%>" autocomplete="off" required style="width: 60%;">
+                                    <select class="comment_input form-control">
+                                       <option value=""> Choose Template</option>
+                                    </select>
+
+                                    <small class="post_meta sample-urls" style="display:none;">
+                                      <i class="fa fa-link"></i> <b>Sample Links</b>
+                                      <!-- Sample Urls -->
+                                    </small>
+                                    
+                                    <button type="submit" class="comment_button pull-right">Subscribe</button>
+                                    <div class="clearfix"></div>
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Links -->
+                     <div class="sidebar" style="padding-top: 20px; height: auto; padding-right: 15px;">
+                        <div class="sidebar_background" style="width: 100%; background-color: #FFFFFF; border-radius:6px;"></div>
+                        <!-- Top Stories -->
+                        <div class="sidebar_section">
+                           <div class="sidebar_title_container">
+                              <!-- Header (page, last updated) -->
+                              <div class="sidebar_title">
+                                 <span>Random</span>
+                                 <div class="pull-right" style="border-bottom: 1px solid #d7d7d7;">
+                                  <!-- Page Metadata -->
+                                 </div>
+                              </div>
+                              <!-- END: Header -->
+                           </div>
+                           <div class="sidebar_section_content" style="padding-top: 30px;">
+                              <div class="sidebar_slider_container">
+                                 <div class="sidebar_slider_top">
+                                    <div class="">
+                                      <% links.forEach(function(link){ %>
+                                        <div class="side_post">
+                                          <a href="<%=link.url%>" target="_blank">
+                                             <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start" style="padding-top:5px;">
+                                                <div class="side_post_image">
+                                                   <div><img src="<%=(link.image)? link.image: '/img/link.png' %>" alt=""></div>
+                                                </div>
+                                                <div class="side_post_content">
+                                                   <div class="side_post_title"><%=link.title%></div>
+                                                   <small class="post_meta post-content"><%=link.content%></small>
+                                                   <small class="post_meta"><b><%=link.pageTitle%></b><span><%=new Date(link.date)%></span></small>
+                                                  </div>
+                                             </div>
+                                          </a>
+                                       </div>
+                                      <% }); %> 
+                                      <% if(links.length === 0) { %> <span class="no-data">Nothing to show. Create page(s) first.</span> <% }%>                                     
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div id="load_more" class="load_more_button text-center trans_200" style="margin-top: 30px; display: none;">Load More</div>
+                        </div>
+                        <!-- Newest Videos -->
+                     </div>
+                  </div>
+
+                  <div class="col-md-3">
+                     <div class="sidebar last-sidebar" style="padding-top: 50px; padding-right: 15px;">
+                        <div class="sidebar_background"></div>
+                        <!-- Top Stories -->
+                        <div class="sidebar_section">
+                           <div class="sidebar_title_container">
+                              <div class="sidebar_title">How It works?</div>
+                           </div>
+                           <div class="sidebar_section_content" style="padding-top: 20px;">
+                              <!-- Top Stories Slider -->
+                              <div class="sidebar_slider_container">
+                                 <div class="sidebar_slider_top">
+                                    <div class="">
+                                       <div class="side_post">
+                                          <a>
+                                             <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                                   <div class="event_day">1</div>
+                                                   <div class="event_month">st</div>
+                                                </div>
+                                                <div class="side_post_content">
+                                                   <div class="side_post_title">Add Page</div>
+                                                   <small class="post_meta" style="margin-top: 0px;">Choose a template (or <b onclick=" window.open('https://github.com/OmarElGabry/gunaydin/issues', '_blank');" style="color: dodgerblue; cursor: pointer;">request one</b>), link, and hit 'Subscribe'. A template is webpage(s) with the same layout. </small>
+                                                </div>
+                                             </div>
+                                          </a>
+                                       </div>
+                                       <div class="side_post">
+                                          <a>
+                                             <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                                   <div class="event_day">2</div>
+                                                   <div class="event_month">nd</div>
+                                                </div>
+                                                <div class="side_post_content">
+                                                   <div class="side_post_title">Manage Pages</div>
+                                                   <small class="post_meta">The latest links for the page will be fetched shortly (~ seconds). Later, you can refresh (update page links), mute, or delete the page. </small>
+                                                </div>
+                                             </div>
+                                          </a>
+                                       </div>
+                                       <div class="side_post">
+                                          <a>
+                                             <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                                   <div class="event_day">3</div>
+                                                   <div class="event_month">rd</div>
+                                                </div>
+                                                <div class="side_post_content">
+                                                   <div class="side_post_title">Facts</div>
+                                                   <small class="post_meta">The pages' links will be updated from time to time (unless muted or user is inactive). Each page has maximum of 50 links (newer will override older links). The date is the date when the link was scraped not created. </small>
+                                                </div>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="sidebar_section" style="margin-top:10px;">
+                            <div class="sidebar_title_container">
+                               <div class="sidebar_title">More?</div>
+                            </div>
+                            <div class="sidebar_section_content" style="padding-top: 20px;">
+                               <!-- Top Stories Slider -->
+                               <div class="sidebar_slider_container">
+                                  <div class="sidebar_slider_top">
+                                     <div class="">
+                                        <div class="side_post">
+                                           <a href="https://github.com/OmarElGabry/gunaydin" target="_blank">
+                                              <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                 <div class="side_post_content" style="padding-left:0;">
+                                                    <div class="side_post_title"><i class="fa fa-bug"></i> Report Bug, Feature, etc.</div>
+                                                    <small class="post_meta">Bugs, features, suggestions, are all welcome. </small>
+                                                  </div>
+                                              </div>
+                                           </a>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Footer -->
+      <footer class="footer">
+         <div class="footer_content" style="padding-top:10px; padding-bottom: 10px;">
+            <div class="copyright" style="margin-top:5px;">
+               Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+               All rights reserved | This template is made by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            </div>
+         </div>
+      </footer>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+      <script src="/js/parallax.min.js"></script>
+      <script src="js/main.js"></script>
+      <script>app({ randNum: '<%=randNum%>', maxlength: '<%=maxlength%>' });</script>
+   </body>
+</html>

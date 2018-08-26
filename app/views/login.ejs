@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Gunaydin | Login</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="description" content="Demo project">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+   </head>
+   <body style="background-image: url('https://source.unsplash.com/1600x900/?turkey,istanbul')">
+    <a href="https://github.com/OmarElGabry/gunaydin" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+      <div class="super_container">
+         <!-- Header -->
+         <div class="home login" style="height: auto; margin-top: 70px;">
+            <div class="container">
+                <div class="row">
+                   <div class="col-lg-4 offset-lg-4">
+                      <div class="post_comment" style="padding: 10% 0 0;">
+                         <div class="row">
+                            <div class="col-xl-12">
+                              <div class="home_content" style="top: 0;">
+                                  <div class="post_category trans_200">
+                                    <a href="/" class="trans_200">
+                                      Gunaydin! <br><small style="font-size:12px;">With <i class="fa fa-heart" style="color:red;"></i> from 🇹🇷</small>
+                                    </a>
+                                  </div>
+                                </div>
+                               <div class="post_comment_form_container">
+                                  <div class="post_comment_title">Login</div>
+                                  <div class="social-buttons" style="text-align: center;">
+                                    <div><span>Login</span> via</div>
+                                    <a href="/auth/facebook">
+                                      <img class="loginBtn" src="img/facebookLoginBtn.png" alt="Sign-In with Facebook">
+                                    </a>
+                                    <a href="/auth/twitter">
+                                      <img class="loginBtn" src="img/twitterLoginBtn.png" alt="Sign-In with Twitter">
+                                    </a>
+                                  </div>
+                                  <div class="form-line"></div>
+                                  <div style="margin-top: 18px; text-align: center;">
+                                    <form action="/register" class="register-form" method="post" >
+                                        <input type="text" class="comment_input" name="username" placeholder="username"/>
+                                        <input type="password" class="comment_input" name="password" placeholder="password"/>
+                                        <button type="submit" class="comment_button">Create</button>
+                                        <p class="message">Already registered? <a class="sign-in" href="#">Sign In</a></p>
+                                        <% if (errors != null && showRegisterForm != null && showRegisterForm === true) { %>
+                                          <% errors.forEach(function(err){ %>
+                                            <p class="message text-danger"><%= err %></p>
+                                          <% }); %>
+                                        <% } %>
+                                      </form>
+                                      
+                                      <form action="/login" class="login-form" method="post">
+                                        <input type="text" class="comment_input" name="username" placeholder="username"/>
+                                        <input type="password" class="comment_input" name="password" placeholder="password"/>
+                                        <button type="submit" class="comment_button">Login</button>
+                                        <p class="message">Not registered? 
+                                            <a class="create-account" href="#">Create an account</a>
+                                            <br> Or <a class="demo-user" href="#">Login as demo</a>
+                                        </p>
+                                        <% if (errors != null && showRegisterForm == null) { %>
+                                          <% errors.forEach(function(err){ %>
+                                            <p class="message text-danger"><%= err %></p>
+                                          <% }); %>
+                                        <% } if (success != null && showRegisterForm == null) { %>
+                                          <p class="message text-success"><%= success %></p>
+                                        <% } %>
+                                      </form>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+         </div>
+         <!-- END: Header -->
+      </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+      <% if(showRegisterForm != null && showRegisterForm === true) { %>
+        <script>
+          $('.register-form').show(); $('.login-form, .social-buttons, .form-line').hide();
+        </script>
+      <% } %>
+      <script>
+        $('.message a.create-account, .message a.sign-in').click(function(){
+          $('form, .social-buttons, .form-line').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
+        $('.message a.demo-user').click(function(){
+          $('form.login-form input[name="username"], form.login-form input[name="password"]').val('demo');
+        });
+      </script>
+   </body>
+</html>

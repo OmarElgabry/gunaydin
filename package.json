@@ -1,0 +1,41 @@
+{
+  "name": "gunaydin",
+  "version": "1.0.0",
+  "description": "Your good mornings.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "url": "git+https://github.com/OmarElGabry/gunaydin.git",
+    "type": "git"
+  },
+  "author": "Omar El Gabry <omar.elgabry.93@gmail.com> (http://omarelgabry.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OmarElGabry/gunaydin/issues"
+  },
+  "homepage": "https://github.com/OmarElGabry/gunaydin",
+  "dependencies": {
+    "async": "^2.6.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.5.9",
+    "eval": "^0.1.2",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "memory-cache": "^0.2.0",
+    "mongoose": "^5.0.17",
+    "electron": "^1.6.10",
+    "nightmare": "2.8.0",
+    "npm": "^6.0.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "winston": "^2.4.2",
+    "winston-loggly-bulk": "^2.0.3"
+  }
+}

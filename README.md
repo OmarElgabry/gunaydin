@@ -65,7 +65,7 @@ Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed
 	```
 	$ git init 
 	$ heroku create [app-name] 
-	$ heroku stack:set cedar-14 set build packs
+	$ heroku stack:set cedar-14 -a [app-name]
 	$ heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt && heroku buildpacks:add --index 2 https://github.com/captain401/heroku-buildpack-xvfb.git && heroku buildpacks:add --index 3 https://github.com/causztic/heroku-electron-buildpack.git && heroku buildpacks:add --index 4 https://github.com/heroku/heroku-buildpack-nodejs.git
 	$ git push heroku master
 	```
